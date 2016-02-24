@@ -1,0 +1,33 @@
+
+case $::operatingsystem {
+
+	'Ubuntu':{
+		$package = "ntp",
+        	notify {"Package is going to be NTP":}
+	 }
+	'RedHat':{
+		$package = "ntpd",
+	        notify {"Package is going to be NTPD":}
+	}
+	
+}
+
+package { $package :
+	ensure 	=> present,
+	before 	=> File["/etc/$package.conf"],
+}
+
+file { "/etc/$package.conf" :
+	ensure 	=> file,
+	mode 	=> 640,
+}
+
+service { $package :
+	if $::is_virtual == true {
+		ensure 		=> running,
+		enable 		=> true,
+		hasrestart	=> true,
+		hasstatus	=> true,
+		subscribe	=> File['/etc/ntp.conf'],
+	}
+}
