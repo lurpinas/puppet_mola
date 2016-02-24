@@ -1,0 +1,978 @@
+    1  man dpkg
+    2  clear
+    3  apt-get install puppetmaster
+    4  ps -ef | grep puppetmaster
+    5  ps -ef | grep puppet
+    6  ps aux | grep puppetmaster
+    7  ps aux | grep puppet
+    8  cd /etc/puppet/
+    9  cat puppet.conf 
+   10  apt-get install puppet
+   11  puppet --version
+   12  telnet localhost 8140
+   13  cd 
+   14  cd ~
+   15  apt-get install git
+   16  apt-get install vim
+   17  git clone https://github.com/puppetlabs/puppet-syntax-vim .vim
+   18  vim hola
+   19  clear
+   20  ls -altr
+   21  cd .vim
+   22  ls -altr
+   23  history
+   24  cd
+   25  puppet resource user root
+   26  puppet resource file /etc/resolv.conf 
+   27  puppet resource file /run/resolvconf/resolv.conf 
+   28  service --status-all
+   29  service --status-all | more
+   30  puppet resource service ssh
+   31  puppet resource service puppetmaster
+   32  puppet resource package vim
+   33  puppet describe -s package
+   34  puppet describe -s file
+   35  facter
+   36  clear
+   37  mkdir learning-manifests
+   38  vim /root/learning-manifests/1.file.pp
+   39  cd learning-manifests/
+   40  ls -altr
+   41  puppet apply 1.file.pp 
+   42  ls -l /tmp/testfile 
+   43  cat /tmp/testfile 
+   44  history
+   45  clear
+   46  vim 1.file.pp 
+   47  vim 2.file.pp 
+   48  ls -l
+   49  puppet apply 2.file.pp 
+   50  ls -altr /tmp
+   51  puppet apply 2.file.pp 
+   52  vim /tmp/testfile 
+   53  puppet apply 1.file.pp 
+   54  cat /tmp/testfile 
+   55  vim /tmp/testfile 
+   56  puppet apply 1.file.pp --noop
+   57  vim /tmp/testfile 
+   58  vim /etc/puppet/puppet.conf 
+   59  vim /etc/hosts
+   60  hostname puppet
+   61  cd /etc/puppet/
+   62  locate autosign.conf
+   63  hostname
+   64  vim autosign.conf
+   65  service puppetmaster restart
+   66  ps aux | grep puppet
+   67  puppet agent -t
+   68  cd manifests/
+   69  ls -altr
+   70  vim Site.pp
+   71  puppet agent -t
+   72  ls -altr
+   73  mv Site.pp site.pp
+   74  ls -altr
+   75  puppet agent -t
+   76  vim site.pp 
+   77  puppet agent -t
+   78  vim site.pp 
+   79  puppet agent -t
+   80  apt-cache search chrome
+   81  clear
+   82  puppet agent -t
+   83  facter fqdn
+   84  clear
+   85  puppet agent -t
+   86  cd /var/lib/puppet/
+   87  ls
+   88  cd client_data/catalog/
+   89  ls -l
+   90  more puppet.0.0.1.json 
+   91  cd
+   92  cd /root/learning-manifests/
+   93  ls -altr
+   94  vim file.pp
+   95  puppet apply file.pp 
+   96  vim file.pp
+   97  puppet apply file.pp 
+   98  vim package.pp
+   99  puppet apply file.pp --noop
+  100  puppet apply package.pp --noop
+  101  puppet apply package.pp
+  102  service apache2 stop
+  103  locate apt | grep log
+  104  more /var/log/apt
+  105  cd /var/log/apt
+  106  ls -altr
+  107  cat history.log 
+  108  clear
+  109  cd -
+  110  ls -altr
+  111  vim service.pp
+  112  service apache2 status
+  113  ps aux | grep http
+  114  puppet apply service.pp --debug
+  115  service apache2 status
+  116  ls -altr
+  117  cp /etc/ssh/ssh_config .
+  118  vim break_ssh.pp
+  119  vim ssh_config 
+  120  puppet apply break_ssh.pp 
+  121  ls -altr /etc/ssh/
+  122  apt-get install sshd
+  123  apt-cache search sshd
+  124  apt-cache search ssh
+  125  apt-cache search ssh | more
+  126  apt-get install sshd
+  127  apt-get install ssh
+  128  cp /etc/ssh/sshd_config .
+  129  vim sshd_config 
+  130  puppet apply break_ssh.pp 
+  131  vim sshd_config 
+  132  puppet apply break_ssh.pp 
+  133  vim sshd_config 
+  134  vim break_ssh.pp
+  135  puppet apply break_ssh.pp 
+  136  service ssh status
+  137  vim break_ssh.pp
+  138  puppet apply break_ssh.pp 
+  139  puppet apply break_ssh.pp --debug
+  140  vim sshd_config 
+  141  puppet apply break_ssh.pp --debug
+  142  ps aux | grep ssh
+  143  ssh root@localhost
+  144  ps aux | grep ssh
+  145  vim sshd_config 
+  146  diff sshd_config /etc/ssh/sshd_config 
+  147  ls -altr
+  148  vim break_ssh.pp
+  149  puppet apply break_ssh.pp
+  150  service ssh status
+  151  service ssh stop
+  152  puppet apply break_ssh.pp
+  153  service ssh status
+  154  cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bkp
+  155  rm -f /etc/ssh/sshd_config
+  156  service ssh restart
+  157  puppet apply break_ssh.pp
+  158  service ssh status
+  159  ls -altr
+  160  cp break_ssh.pp break_apache2.pp
+  161  vim break_apache2.pp 
+  162  puppet apply break_apache2.pp 
+  163  service apache2 start
+  164  vim break_apache2.pp 
+  165  ls -altr /etc/apache2/
+  166  ls -altr
+  167  vim break_apache2.pp 
+  168  vim break_ssh.pp
+  169  vim break_apache2.pp 
+  170  puppet apply break_apache2.pp 
+  171  ps aux | grep http
+  172  puppet apply break_apache2.pp 
+  173  ps aux | grep http
+  174  ps aux | grep apache
+  175  cat /etc/apache2/sites-enabled/000-default.conf 
+  176  clear
+  177  vim break_apache2.pp 
+  178  puppet apply break_apache2.pp 
+  179  echo $APACHE_LOG_DIR
+  180  cd /etc/apache2/
+  181  ls -altr
+  182  cat apache2.conf 
+  183  cat apache2.conf | grep -v "#"
+  184  ls -altr /var/log/ap
+  185  ls -altr /var/log/apache2/
+  186  ls -altr
+  187  ls -altr /var/log/apache2/
+  188  cat /var/log/apache2/error.log 
+  189  ls -altr
+  190  cat envvars 
+  191  cat envvars | grep -v "#"
+  192  ls -altr /var/log/apache2/
+  193  puppet apply break_apache2.pp 
+  194  cd -
+  195  vim break_apache2.pp 
+  196  ps -aux | grep apache
+  197  cat /proc/19959/environ 
+  198  cat /proc/19959/environ | grep LOG_DIR
+  199  cat /proc/19959/environ | grep "LOG_DIR"
+  200  cat /proc/19959/environ 
+  201  clear
+  202  cat /etc/apache2/sites-enabled/000-default.conf 
+  203  clear
+  204  vim 3.file.pp
+  205  vim break_apache2.pp 
+  206  vim chaining.pp
+  207  pupper appy chaining.pp 
+  208  pupper apply chaining.pp 
+  209  puppet apply chaining.pp 
+  210  vim chaining.pp
+  211  puppet apply chaining.pp 
+  212  vim chaining.pp
+  213  puppet apply chaining.pp 
+  214  vim chaining.pp
+  215  puppet apply chaining.pp 
+  216  vim chaining.pp
+  217  puppet apply chaining.pp 
+  218  clear
+  219  ls -altr
+  220  cp break_apache2.pp break_apache2_chaining.pp
+  221  vim break_apache2_chaining.pp 
+  222  puppet apply break_apache2_chaining.pp 
+  223  vim break_apache2_chaining.pp 
+  224  puppet apply break_apache2_chaining.pp 
+  225  vim break_apache2_chaining.pp 
+  226  puppet apply break_apache2_chaining.pp 
+  227  vim break_apache2_chaining.pp 
+  228  puppet apply break_apache2_chaining.pp 
+  229  vim break_apache2_chaining.pp 
+  230  puppet apply break_apache2_chaining.pp 
+  231  service apache2 status
+  232  vim break_apache2_chaining.pp 
+  233  service apache2 status
+  234  puppet apply break_apache2_chaining.pp 
+  235  vim break_apache2_chaining.pp 
+  236  clear
+  237  facter
+  238  facter fqdn
+  239  facter hostname
+  240  facter ipaddress
+  241  facter operatingsystem
+  242  vim variables.pp
+  243  puppet apply variables.pp 
+  244  cat /etc/motd 
+  245  cat /etc/hosts
+  246  cat /etc/motd 
+  247  ifconfig
+  248  cat /etc/hosts
+  249  facter virtual
+  250  facter is_virtual
+  251  facter | more
+  252  facter interfacesç
+  253  facter interfaces
+  254  ps aux
+  255  top
+  256  clear
+  257  vim conditionals.pp
+  258  ls -l
+  259  cat break_ssh.pp 
+  260  cat break_apache2.pp 
+  261  grep notify
+  262  grep notify *
+  263  vim conditionals.pp
+  264  puppet apply conditionals.pp 
+  265  vim conditionals.pp
+  266  puppet apply conditionals.pp 
+  267  vim conditionals.pp
+  268  puppet apply conditionals.pp 
+  269  vim conditionals.pp
+  270  puppet apply conditionals.pp 
+  271  vim conditionals.pp
+  272  clear
+  273  vim conditionals.pp
+  274  puppet apply conditionals.pp 
+  275  vim conditionals.pp
+  276  puppet apply conditionals.pp 
+  277  facter is_virtual
+  278  vim conditionals.pp
+  279  cp conditionals.pp conditionalinstalling.pp
+  280  vim conditionalinstalling.pp 
+  281  puppet apply conditionals.pp 
+  282  apt-get install gcc
+  283  apt-get install build-essentials
+  284  apt-get install build-essential
+  285  vim conditionalinstalling.pp 
+  286  puppet apply conditionals.pp 
+  287  vim conditionalinstalling.pp 
+  288  apt-get install build-essential
+  289  clear
+  290  cd /root/
+  291  ls -altr
+  292  cd learning-manifests/
+  293  ls -altr
+  294  cp break_ssh.pp ntp.pp
+  295  vim ntp.pp 
+  296  apt-cache search ntp
+  297  vim ntp.pp 
+  298  clear
+  299  locate ntpd
+  300  locate ntp.conf
+  301  puppet apply ntp.pp 
+  302  vim ntp.pp 
+  303  puppet apply ntp.pp 
+  304  vim ntp.pp 
+  305  puppet apply ntp.pp 
+  306  vim ntp.pp 
+  307  puppet apply ntp.pp 
+  308  vim ntp.pp 
+  309  vim conditionals.pp
+  310  vim conditionalinstalling.pp 
+  311  vim ntp.pp 
+  312  puppet apply ntp.pp 
+  313  vim ntp.pp 
+  314  puppet apply ntp.pp 
+  315  vim ntp.pp 
+  316  vim conditionals.pp
+  317  vim ntp.pp 
+  318  vim conditionals.pp
+  319  vim ntp.pp 
+  320  puppet apply ntp.pp 
+  321  vim ntp.pp 
+  322  puppet apply ntp.pp 
+  323  vim ntp.pp 
+  324  vim conditionals.pp
+  325  vim ntp.pp 
+  326  vim conditionals.pp
+  327  puppet apply conditionals.pp 
+  328  vim ntp.pp 
+  329  puppet apply ntp.pp
+  330  vim ntp.pp 
+  331  puppet apply ntp.pp
+  332  vim ntp.pp 
+  333  cp ntp.pp ntp.pp.bkp
+  334  vim ntp.pp
+  335  puppet apply ntp.pp
+  336  cp conditionals.pp ntp.pp
+  337  vim ntp.pp
+  338  puppet apply ntp.pp
+  339  vim ntp.pp
+  340  vim ntp.pp.bkp 
+  341  vim ntp.pp
+  342  puppet apply ntp.pp
+  343  vim ntp.pp
+  344  puppet apply ntp.pp
+  345  cat /etc/ntp.conf 
+  346  cat /etc/ntp.conf | grep -v "#"
+  347  ls -altr
+  348  cat /etc/ntp.conf | grep -v "#" >> ntpd.conf
+  349  vim ntp.pp
+  350  grep source *
+  351  vim ntp.pp
+  352  vim ntp.pp.bkp 
+  353  vim ntp.pp
+  354  puppet apply ntp.pp
+  355  vim ntp.pp
+  356  puppet apply ntp.pp
+  357  vim ntp.pp
+  358  puppet apply ntp.pp
+  359  vim conditionals.pp
+  360  vim ntp.pp
+  361  puppet apply ntp.pp
+  362  vim ntp.pp
+  363  puppet apply ntp.pp
+  364  facter is_virtual
+  365  vim ntp.pp
+  366  puppet apply ntp.pp
+  367  vim ntp.pp
+  368  puppet apply ntp.pp
+  369  ls -l /etc/ntp.conf 
+  370  cat /etc/ntp.conf
+  371  vim ntp_definitivo.pp
+  372  puppet apply ntp_definitivo.pp 
+  373  vim ntp_definitivo.pp
+  374  puppet apply ntp_definitivo.pp 
+  375  vim ntp_definitivo.pp
+  376  puppet apply ntp_definitivo.pp 
+  377  vim ntp_definitivo.pp
+  378  puppet apply ntp_definitivo.pp 
+  379  vim ntp_definitivo.pp
+  380  puppet apply ntp_definitivo.pp 
+  381  vim ntp_definitivo.pp
+  382  puppet apply ntp_definitivo.pp 
+  383  vim ntp_definitivo.pp
+  384  puppet apply ntp_definitivo.pp 
+  385  man apt
+  386  apt-remove ntp
+  387  apt-get remove ntp
+  388  cd /etc/
+  389  ls -altr ntp*
+  390  rm ntp.conf 
+  391  cd /root/learning-manifests/
+  392  ls -altr
+  393  puppet apply ntp_definitivo.pp 
+  394  vim ntp_definitivo.pp
+  395  puppet apply ntp_definitivo.pp 
+  396  vim ntp_definitivo.pp
+  397  puppet apply ntp_definitivo.pp 
+  398  apt-get remove ntp
+  399  rm /etc/ntp.conf 
+  400  puppet apply ntp_definitivo.pp 
+  401  service ntp status
+  402  puppet apply --configprint modulepath
+  403  puppet apply --configprint all
+  404  cd /etc/puppet/modules/
+  405  ls -altr
+  406  mkdir ntp
+  407  cd ntp/
+  408  mkdir manifests;
+  409  cd manifests/
+  410  cp /root/learning-manifests/ntp_definitivo.pp init.pp
+  411  ls -altr
+  412  cd ~
+  413  puppet apply -e "include ntp"
+  414  mkdir /etc/puppet/modules/ntp/files
+  415  mv /root/learning-manifests/ntp*conf /etc/puppet/modules/ntp/files/
+  416  vim /etc/puppet/modules/ntp/manifests/init.pp 
+  417  puppet apply -e "include ntp"
+  418  mkdir /etc/puppet/manifests/
+  419  vim /etc/puppet/manifests/use_ntp.pp
+  420  apt-get remove ntp
+  421  puppet apply --verbose /etc/puppet/manifests/use_ntp.pp 
+  422  hostname
+  423  hostname puppet
+  424  puppet apply --verbose /etc/puppet/manifests/use_ntp.pp 
+  425  cd /root
+  426  cd learning-manifests/
+  427  ls -altr
+  428  cd /etc/puppet/modules/
+  429  ls -altr
+  430  mkdir apache
+  431  ls -altr
+  432  cd apache/
+  433  ls -altr
+  434  mkdir manifests
+  435  mkdir files
+  436  mkdir templates
+  437  ls -altr
+  438  cd manifests/
+  439  ls -altr
+  440  vim init.pp
+  441  cp /root/learning-manifests/ntp_definitivo.pp init.pp
+  442  vim init.pp 
+  443  vim install.pp
+  444  vim init.pp 
+  445  vim install.pp
+  446  vim init.pp 
+  447  vim install.pp
+  448  vim init.pp 
+  449  vim install.pp 
+  450  ls -altr
+  451  vim init.pp 
+  452  cp /var/www/html/index.html ../files/
+  453  cd files
+  454  ls -altr
+  455  cd ..
+  456  cd files/
+  457  ls -altr
+  458  vim index.html 
+  459  cd ..
+  460  cd manifests/
+  461  ls -altr
+  462  vim init.pp 
+  463  cd /var/www/html/
+  464  ls -altr
+  465  cp index.html notfound.html
+  466  vim notfound.html 
+  467  cd /etc/puppet/modules/apache/files/
+  468  ls -altr
+  469  cp index.html notfound.html
+  470  vim notfound.html 
+  471  ls -altr
+  472  cd ..
+  473  cd manifests/
+  474  ls -altr
+  475  vim in
+  476  vim init.pp 
+  477  cp /etc/puppet/manifests/use_ntp.pp /etc/puppet/manifests/use_apache.pp
+  478  vim /etc/puppet/manifests/use_apache.pp 
+  479  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  480  cd ..
+  481  ls -altr
+  482  mv apache/ apache2
+  483  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  484  cd apache2/manifests/
+  485  vim init.pp 
+  486  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  487  vim init.pp 
+  488  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  489  vim init.pp 
+  490  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  491  vim init.pp 
+  492  vim install.pp
+  493  vim init.pp 
+  494  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  495  vim init.pp 
+  496  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  497  vim init.pp 
+  498  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  499  vim init.pp 
+  500  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  501  locate 000
+  502  locate 000 | grep default
+  503  vim init.pp 
+  504  locate 000 | grep default
+  505  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  506  vim init.pp 
+  507  ls -altr ../files/
+  508  vim init.pp 
+  509  cp /etc/apache2/sites-enabled/000-default.conf ../files/
+  510  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  511  vim init.pp 
+  512  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  513  vim init.pp 
+  514  ls -altr /etc/puppet/modules/apache2/files/
+  515  vim init.pp 
+  516  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  517  vim init.pp 
+  518  apt-cache search apache
+  519  clear
+  520  vim init.pp 
+  521  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  522  cat /root/learning-manifests/break_apache2
+  523  cat /root/learning-manifests/break_apache2.pp 
+  524  vim init.pp 
+  525  vim install.pp 
+  526  vim init.pp 
+  527  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  528  vim init.pp 
+  529  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  530  vim init.pp 
+  531  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  532  vim init.pp 
+  533  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  534  vim init.pp 
+  535  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  536  vim init.pp 
+  537  cd ..
+  538  cd files/
+  539  ls -altr
+  540  vim 000-default.conf 
+  541  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  542  service apache2 restart
+  543  vim 000-default.conf 
+  544  service apache2 restart
+  545  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  546  cd /var/www/html/
+  547  ls -altr
+  548  cat notfound.html 
+  549  cd /etc/puppet/modules/apache2/manifests/
+  550  ls -altr
+  551  vim init.pp 
+  552  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  553  vim init.pp 
+  554  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  555  vim /etc/apache2/sites-enabled/000-default.conf 
+  556  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  557  cd ..
+  558  cd files/
+  559  ls -altr
+  560  vim 000-default.conf 
+  561  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  562  vim 000-default.conf 
+  563  locate .htaccess
+  564  vim 000-default.conf 
+  565  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  566  vim 000-default.conf 
+  567  cd ..
+  568  cd manifests/
+  569  ls -altr
+  570  vim init.pp 
+  571  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  572  vim init.pp 
+  573  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  574  vim init.pp 
+  575  vim install.pp 
+  576  vim init.pp 
+  577  vim install.pp 
+  578  vim init.pp 
+  579  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  580  vim init.pp 
+  581  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  582  vim init.pp 
+  583  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  584  vim init.pp 
+  585  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  586  vim init.pp 
+  587  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  588  vim init.pp 
+  589  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  590  vim init.pp 
+  591  vim install.pp 
+  592  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  593  vim install.pp 
+  594  vim init.pp 
+  595  vim install.pp 
+  596  vim init.pp 
+  597  vim install.pp 
+  598  puppet apply --verbose /etc/puppet/manifests/use_apache.pp 
+  599  vim init.pp 
+  600  puppet apply -e "include apache2"
+  601  puppet apply -e "include apache2" --verbose
+  602  vim init.pp 
+  603  puppet apply -e "class{apache2:}" --verbose
+  604  puppet apply -e "include apache2" --verbose
+  605  vim init.pp 
+  606  vim configfiles.pp
+  607  vim init.pp 
+  608  puppet apply -e "include apache2" --verbose
+  609  vim configfiles.pp
+  610  vim init.pp 
+  611  puppet apply -e "include apache2" --verbose
+  612  vim init.pp 
+  613  puppet apply -e "include apache2" --verbose
+  614  vim init.pp 
+  615  puppet apply -e "include apache2" --verbose
+  616  cd ..
+  617  cd files/
+  618  ls -altr
+  619  vim index.html 
+  620  puppet apply -e "include apache2" --verbose
+  621  vim init.pp 
+  622  cd ..
+  623  cd manifests/
+  624  ls -altr
+  625  vim configfiles.pp
+  626  vim ../files/000-default.conf 
+  627  vim configfiles.pp
+  628  puppet apply -e "include apache2" --verbose
+  629  cat /etc/apache2/sites-enabled/000-default.conf 
+  630  clear
+  631  ls -altr
+  632  vim init.pp 
+  633  vim configfiles.pp
+  634  ls -altr
+  635  cd ..
+  636  tar cpfz apache2.lluisurpinas.tar.gz apache2/
+  637  ls -altr
+  638  cp apache2.lluisurpinas.tar.gz /root/learning-manifests/
+  639  rm apache2.lluisurpinas.tar.gz 
+  640  cp /root/learning-manifests/apache2.lluisurpinas.tar.gz /home/curso/Escritorio/
+  641  cd /etc/puppet/modules/apache2/files/
+  642  vim notfound.html 
+  643  puppet apply -e "include apache2" --verbose
+  644  vim notfound.html 
+  645  puppet apply -e "include apache2" --verbose
+  646  vim notfound.html 
+  647  puppet apply -e "include apache2" --verbose
+  648  apt-get remove apache
+  649  apt-get remove apache2
+  650  puppet apply -e "include apache2" --verbose
+  651  service apach2 status
+  652  service apache2 status
+  653  xeyes
+  654  apt-cache search xeyes
+  655  apt-get install x11-apps
+  656  sudo apt-get install tuxeyes
+  657  apt-cache search tuxeyes
+  658  cd /root/learning-manifests/
+  659  ls -altr
+  660  vim puppet-lint.pp
+  661  puppet apply puppet-lint.pp 
+  662  vim puppet-lint.pp
+  663  vim break_ssh.pp 
+  664  vim puppet-lint.pp
+  665  puppet apply puppet-lint.pp 
+  666  puppet-lint /etc/puppet/modules/
+  667  vim puppet-lint.pp
+  668  puppet-lint /etc/puppet/modules/
+  669  cd /etc/puppet/modules/apache2/
+  670  cd ..
+  671  cp -r apache2/ /home/curso/Escritorio/
+  672  cd apache2/manifests/
+  673  vim init.pp 
+  674  puppet-lint /etc/puppet/modules/
+  675  puppet-lint /etc/puppet/modules/apache2/
+  676  vim init.pp 
+  677  puppet-lint /etc/puppet/modules/apache2/init.
+  678  puppet-lint /etc/puppet/modules/apache2/init.pp
+  679  puppet-lint /etc/puppet/modules/apache2/
+  680  vim init.pp 
+  681  puppet-lint --fix /etc/puppet/modules/
+  682  puppet apply -e "include apache2" --verbose
+  683  vim init.pp 
+  684  vim install.pp 
+  685  puppet-lint --fix /etc/puppet/modules/
+  686  puppet-lint --fix 
+  687  puppet-lint --fix /etc/puppet/modules/apache2/manifests/init.pp 
+  688  vim init.pp 
+  689  puppet-lint --fix /etc/puppet/modules/apache2/manifests/install.pp 
+  690  puppet-lint --fix /etc/puppet/modules/apache2/manifests/configfiles.pp 
+  691  puppet-lint --fix /etc/puppet/modules/
+  692  puppet-lint /etc/puppet/modules/
+  693  clear
+  694  ls -altr
+  695  puppet apply -e "include apache2" --verbose
+  696  puppet-lint --fix --help
+  697  puppet-lint --fix
+  698  puppet-lint /etc/puppet/modules/
+  699  puppet-lint --fix /etc/puppet/modules/ntp/manifests/init.pp 
+  700  puppet-lint --fix /etc/puppet/modules/ntp/manifests/
+  701  puppet-lint /etc/puppet/modules/
+  702  puppet-lint --fix /etc/puppet/modules/ntp/manifests/
+  703  puppet-lint --fix /etc/puppet/modules/ntp/manifests/init.pp 
+  704  puppet-lint /etc/puppet/modules/ntp/manifests/
+  705  puppet-lint --fix /etc/puppet/modules/ntp/manifests/init.pp 
+  706  puppet-lint --fix -f /etc/puppet/modules/ntp/manifests/init.pp 
+  707  puppet-lint --fix /etc/puppet/modules/ntp/manifests
+  708  cd ..
+  709  cd ntp/
+  710  cd manifests/
+  711  vim init.pp 
+  712  puppet-lint --fix /etc/puppet/modules/ntp/manifests
+  713  puppet module search apache
+  714  puppet module install puppetlabs-mysql
+  715  puppet module list
+  716  puppet module generate lluisurpinas-suchModule
+  717  cd ..
+  718  ls -altr
+  719  locate lluisurpinas
+  720  updatedb
+  721  locate lluisurpinas
+  722  cd ntp/manifests/
+  723  mv lluisurpinas-suchModule/ /etc/puppet/modules/
+  724  cd /etc/puppet/modules/
+  725  ls -altr
+  726  cd lluisurpinas-suchModule/
+  727  ls -altr
+  728  tree
+  729  apt -get install tree
+  730  apt-get install tree
+  731  cd ..
+  732  tree lluisurpinas-suchModule/
+  733  puppet modules list
+  734  puppet module list
+  735  cd lluisurpinas-suchModule/
+  736  ls -altr 
+  737  cd manifests/
+  738  ls -altr
+  739  vim init.pp 
+  740  cat init.pp | grep -v "#"
+  741  vim init.pp 
+  742  facter
+  743  facter | grep operating
+  744  facter | grep mem
+  745  cd /home/curso/D
+  746  cd /home/curso/Descargas/
+  747  ls -altr
+  748  updatedb
+  749  locate xeyes
+  750  puppet module install puppetlabs-apache
+  751  xeyes
+  752  cd /etc/puppet/modules/
+  753  ls -altr
+  754  tar cpfz apache2.lurpinas.tar.gz apache2/
+  755  mv apache2.lurpinas.tar.gz /home/curso/Escritorio/
+  756  ls -altr
+  757  mv apache2/ /home/curso/Escritorio/
+  758  rm -f /home/curso/Escritorio/apache2
+  759  rm -rf /home/curso/Escritorio/apache2
+  760  mv apache2/ /home/curso/Escritorio/
+  761  ls -altr
+  762  cd apache/
+  763  ls -altr
+  764  cd manifests/
+  765  ls -altr
+  766  cd ..
+  767  cd templates/
+  768  ls -altr
+  769  vim httpd.conf.erb 
+  770  cd vhost/
+  771  ls -altr
+  772  cd ..
+  773  ls -altr
+  774  vim namevirtualhost.erb 
+  775  cd ..
+  776  cd manifests/
+  777  ls -altr
+  778  cd vhost
+  779  ls -altr
+  780  vim custom.pp 
+  781  cd ..
+  782  cd init.pp 
+  783  vim init.pp 
+  784  ls -l
+  785  vim vhost.pp 
+  786  cd /root/learning-manifests/
+  787  ls -altr
+  788  cp apache-module.pp
+  789  cp break_ssh.pp apache-module.pp
+  790  vim apache-module.pp 
+  791  vim /home/curso/Escritorio/apache2/manifests/init.pp 
+  792  vim apache-module.pp 
+  793  puppet apply --verbose apache-module.pp 
+  794  vim apache-module.pp 
+  795  puppet apply --verbose apache-module.pp 
+  796  vim apache-module.pp 
+  797  puppet apply --verbose apache-module.pp 
+  798  cd /var/www/vhost/
+  799  ls -altr
+  800  vim apache-module.pp 
+  801  cd -
+  802  vim apache-module.pp 
+  803  vim /home/curso/Escritorio/apache2/manifests/init.pp 
+  804  vim /home/curso/Escritorio/apache2/manifests/configfiles.pp 
+  805  vim apache-module.pp 
+  806  cat /var/www/html/index.html 
+  807  vim apache-module.pp 
+  808  puppet apply --verbose apache-module.pp 
+  809  vim apache-module.pp 
+  810  puppet apply --verbose apache-module.pp 
+  811  vim apache-module.pp 
+  812  puppet apply --verbose apache-module.pp 
+  813  vim apache-module.pp 
+  814  puppet apply --verbose apache-module.pp 
+  815  cd /var/www/html/
+  816  cd ..
+  817  cd vhost/
+  818  ls -altr
+  819  cat index.html 
+  820  lsof -nPi:81
+  821  cd -
+  822  cd /root/learning-manifests/
+  823  vim apache-module.pp 
+  824  vim /etc/hosts
+  825  lsof -nPi:81
+  826  puppet apply --verbose apache-module.pp 
+  827  cd /var/www/vhost/
+  828  ls -altr
+  829  cat index.html 
+  830  vim apache-module.pp 
+  831  cd /root/learning-manifests/
+  832  vim apache-module.pp 
+  833  cat /etc/host
+  834  cat /etc/hosts
+  835  :q
+  836  vim apache-module.pp 
+  837  vim apacheforge.pp
+  838  xeyes
+  839  xeyes :0.0
+  840  xeyes :1
+  841  locate xeyes
+  842  cd /usr/share/man/man1/xeyes.1.gz
+  843  cd /usr/share/man/man1/
+  844  ls -altr
+  845  cd 
+  846  cd /root/
+  847  tar cpfz learning-manifests.tar.gz learning-manifests/
+  848  cp learning-manifests.tar.gz /home/curso/Escritorio/
+  849  exit
+  850  man git
+  851  git --version
+  852  puppet describe file
+  853  clear
+  854  cd
+  855  cd /root/learning-manifests
+  856  ls -altr
+  857  git init
+  858  git add *.pp
+  859  git commit -m 'initial project version'
+  860  git config --global lluis.urpinas "LluisUrpinas"
+  861  git commit -m 'initial project version'
+  862  ls -altr
+  863  cd .git/
+  864  ls -altr
+  865  cd ..
+  866  git clone https://github.com/edupr91/puppet-apply.git
+  867  ls -altr
+  868  cd p
+  869  cd puppet-
+  870  cd puppet-apply/
+  871  ls -altr
+  872  cat apply.yaml 
+  873  git log
+  874  git diff
+  875  git diff a9ec886e2ca263104cad2971211d3503e8637063
+  876  touch pepe
+  877  git add pepe 
+  878  git status
+  879  git config --global lluis.urpinas "LluisUrpinas"
+  880  git commit -m 'initial project version'
+  881  git config --global user.email "you@example.com"
+  882  git config --global user.name "LluisUrpinas"
+  883  git commit -m 'initial project version'
+  884  git log
+  885  git diff
+  886  vim pepe
+  887  git diff
+  888  git reset --hard HEAD
+  889  git diff
+  890  git push origin master
+  891  cd ..
+  892  ls -l
+  893  echo "# puppet_mola" >> README.md
+  894  git init
+  895  git add README.md 
+  896  git commit -m "first commit"
+  897  git remote add origin https://github.com/lurpinas/puppet_mola.git
+  898  git push -u origin master
+  899  git log
+  900  git status
+  901  git add apache2.lluisurpinas.tar.gz 
+  902  git status
+  903  git push -u origin master
+  904  git commit -m "second commit"
+  905  git push -u origin master
+  906  git log
+  907  vim README.md 
+  908  touch test
+  909  git status
+  910  git commit README.md 
+  911  git log
+  912  vm puppet-apply/ ../
+  913  mv puppet-apply/ ../
+  914  git add test 
+  915  git status
+  916  git add ssh*
+  917  git status
+  918  git add ntp.pp.bkp 
+  919  git status
+  920  git commit -m "fourth commit"
+  921  git log
+  922  git push -u origin master
+  923  git checkout -b prueba
+  924  git branch
+  925  touch pruebabranch
+  926  git add pruebabranch 
+  927  git status
+  928  git commit
+  929  git push
+  930  git branch
+  931  git status
+  932  git log
+  933  git commit pruebabranch 
+  934  git push
+  935  git branch
+  936  git push -u origin prueba
+  937  git status
+  938  git branch
+  939  git checkout master
+  940  git branch
+  941  git log
+  942  git merge prueba
+  943  git push
+  944  cd /var/tmp/
+  945  git clone https://github.com/lurpinas/puppet_mola.git
+  946  ls -altr
+  947  cd puppet_mola/
+  948  ls -altr
+  949  git branch
+  950  vim archivo
+  951  git add archivo 
+  952  git commit -m "añado archivo" archivo 
+  953  git push
+  954  cd /root/learning-manifests
+  955  ls -altr
+  956  ls -altr archi
+  957  git pull
+  958  ls -altr archivo 
+  959  cat archivo 
+  960  vim archivo2
+  961  git add archivo2 
+  962  git commit -m "añado archivo2"
+  963  git push
+  964  cd ..
+  965  cd
+  966  ls -altr
+  967  cd /var/tmp/
+  968  ls -altr
+  969  cd puppet_mola/
+  970  ls -altr
+  971  vim archivo3
+  972  git add archivo3 
+  973  git commit -m "archivo3" archivo3 
+  974  git push
+  975  git pull
+  976  ls -altr arch*
+  977  git push
+  978  history >> comandos.txt
